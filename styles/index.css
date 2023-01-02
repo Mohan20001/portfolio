@@ -18,6 +18,7 @@
     --large-margin:clamp(18px, 2vw, 24px);
     --small-margin:clamp(10px, 1.5vw, 16px);
     --sci-fi-fonts:'Mukta', sans-serif;
+    --container-height: calc(100vh - 56px);
 }
 
 html{
@@ -185,9 +186,14 @@ body::-webkit-scrollbar-track{
     z-index: 999;
 }
 
+.body-wrapper{
+    margin-top: 56px;
+    background-color:red;
+}
+
 .section{
     background: var(--primary-color-black);
-    min-height: 100vh;
+    min-height: var(--container-height);
     font-size: var(--small-text);
     padding: clamp(12px, 2vw, 18px) auto;
     padding-inline: var(--container-padding);
@@ -224,7 +230,17 @@ body::-webkit-scrollbar-track{
     animation-delay: .1s;
     margin: 0 0.5rem;
     animation-duration: 2s;
+    /* text-indent: 2em; */
+}
 
+/* .section p::first-letter{
+    font-size: 1.2rem;
+    font-weight: 800;
+} */
+
+.section .p1{
+    text-indent: 0;
+    font-size: 1.3rem;
 }
 
 .section .section-content{
@@ -234,6 +250,7 @@ body::-webkit-scrollbar-track{
     border-left: 1px solid var(--secondary-heading);
     /* background: red; */
     padding-inline: var(--container-padding);
+    padding-right: 0px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -265,7 +282,6 @@ body::-webkit-scrollbar-track{
 
 
 .togle-container{
-    background: red;
     width: 100px;
     height: 30px;
     position: fixed;
@@ -305,6 +321,29 @@ body::-webkit-scrollbar-track{
 
 .togle:hover>.togle-tracker{
     transform: translateX(22px);
+}
+
+
+.projects-container{
+    width: 100%;
+    height: 100%;
+    padding: var(--content-padding);
+    /* background: rgb(172, 170, 170); */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    padding-bottom: 0px;
+    grid-gap: 1em;
+}
+
+.projects-container img{
+    width: 100%;
+    height: auto;
+    aspect-ratio: 13/8;
+    margin-right: 1em;
+    margin-bottom: 1em;
 }
 
 
@@ -355,13 +394,32 @@ body::-webkit-scrollbar-track{
     }
 }
 
-@media only screen and (max-width: 720px){
-    .section{
-        /* justify-content: flex-start; */
-        /* padding-top: 1rem; */
-        /* margin-top: 4rem; */
-        /* overflow-y: scroll; */
-        color: #fff;
+
+
+@media only screen and (max-width: 420px){
+    .projects-container{
+        grid-template-columns: 1fr;
+        
+    }
+    .nav .nav-list-item{
+        margin-bottom: clamp(20px, 2vw, 28px);
     }
 }
+
+
+
+@media only screen and (max-width: 300px){
+    .section .section-content{
+        border: none;
+        padding-inline: 8px;
+    }
+
+    
+    .section .section-content::after, .section .section-content::before{
+        content: none;
+        display: none;
+    }
+}
+
+
 
